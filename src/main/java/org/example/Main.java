@@ -40,7 +40,7 @@ public class Main {
 
         dataStream.print();
 
-        System.out.println(env.getStreamGraph().getStreamingPlanAsJSON());
+        // System.out.println(env.getStreamGraph().getStreamingPlanAsJSON());
 
         env.execute();
     }
