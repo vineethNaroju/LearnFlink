@@ -1,4 +1,4 @@
-package org.example;
+package org.example.sensors;
 
 public class SensorReading {
     public String id;
