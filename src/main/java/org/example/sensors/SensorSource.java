@@ -9,7 +9,7 @@ import java.util.Random;
 public class SensorSource extends RichParallelSourceFunction<SensorReading> {
 
     private boolean running = true;
-    int N = 10;
+    int N = 1000;
 
 
     @Override
@@ -29,7 +29,9 @@ public class SensorSource extends RichParallelSourceFunction<SensorReading> {
                sourceContext.collect(new SensorReading(sensorId, currentTime, temperature));
            }
 
-           Thread.sleep(100);
+           // sourceContext.markAsTemporarilyIdle();
+
+           Thread.sleep(10);
        }
 
     }

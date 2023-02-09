@@ -23,6 +23,8 @@ public class Main {
 
         // DataStream<String> text = env.fromElements("hello", "world", "123", "456");
 
+        env.disableOperatorChaining();
+
 
         DataStream<Tuple2<String, Integer>> dataStream = env
                 .socketTextStream("localhost", 9999)

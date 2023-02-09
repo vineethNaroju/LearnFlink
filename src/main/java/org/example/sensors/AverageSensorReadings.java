@@ -10,7 +10,7 @@ import org.apache.flink.util.Collector;
 
 public class AverageSensorReadings {
 
-    public static void main(String[] args) throws  Exception {
+    public static void main(String[] args) throws Exception {
 
 
         Configuration config = new Configuration();
@@ -25,13 +25,12 @@ public class AverageSensorReadings {
                 .assignTimestampsAndWatermarks(new SensorTimeAssigner());
 
 
-
         DataStream<SensorReading> avgTemp = sensorStream
                 .map(val -> new SensorReading(val.id, val.timestamp, (val.temperature - 32) * (5/9)))
+                .startNewChain()
                 .keyBy(val -> val.id)
                 .timeWindow(Time.seconds(1))
                 .apply(new AverageTemperature());
-
 
         avgTemp.print();
 
@@ -44,7 +43,8 @@ public class AverageSensorReadings {
         @Override
         public void apply(String sensorId, TimeWindow timeWindow, Iterable<SensorReading> iterable,
                           Collector<SensorReading> collector) throws Exception {
-            System.out.println("timeWindow:" + timeWindow);
+
+            Thread.sleep(2000);
 
             int cnt = 0;
             double sum = 0.0;
