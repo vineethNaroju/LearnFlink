@@ -1,0 +1,31 @@
+A -> B -> C -> D
+
+
+
+
+Cases:
+
+1. C is busy , B is backpressured => tumbling window word count.
+Decision: C has to be scaled out.
+
+2.
+
+
+
+------------
+
+1, 2, 5, 5
+
+1, 60, 110, 5.      // 40, 200
+
+1, 27, 50, 5.
+
+10, 30, 6, 4
+
+C is busy
+
+Throughput, Latency, retained or improved.
+
+Sudden input -> scale out
+
+Don't be stuck in loop scale up or down.
