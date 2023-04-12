@@ -1,7 +1,6 @@
-package org.example.sensors;
+package org.rough.sensors;
 
 import org.apache.flink.streaming.api.functions.source.RichParallelSourceFunction;
-import org.example.sensors.SensorReading;
 
 import java.util.Calendar;
 import java.util.Random;

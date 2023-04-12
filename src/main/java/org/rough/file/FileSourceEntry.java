@@ -1,4 +1,4 @@
-package org.example.file;
+package org.rough.file;
 
 import org.apache.flink.api.common.eventtime.WatermarkStrategy;
 import org.apache.flink.connector.file.src.FileSource;

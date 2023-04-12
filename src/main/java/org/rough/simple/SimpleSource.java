@@ -1,4 +1,4 @@
-package org.example.simple;
+package org.rough.simple;
 
 import org.apache.flink.api.common.state.ListState;
 import org.apache.flink.streaming.api.functions.source.SourceFunction;

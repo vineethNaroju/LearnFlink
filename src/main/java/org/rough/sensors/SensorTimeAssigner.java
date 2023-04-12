@@ -1,8 +1,7 @@
-package org.example.sensors;
+package org.rough.sensors;
 
 import org.apache.flink.streaming.api.functions.timestamps.BoundedOutOfOrdernessTimestampExtractor;
 import org.apache.flink.streaming.api.windowing.time.Time;
-import org.example.sensors.SensorReading;
 
 public class SensorTimeAssigner extends BoundedOutOfOrdernessTimestampExtractor<SensorReading> {
 

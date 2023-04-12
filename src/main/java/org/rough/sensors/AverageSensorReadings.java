@@ -1,4 +1,4 @@
-package org.example.sensors;
+package org.rough.sensors;
 
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.datastream.DataStream;

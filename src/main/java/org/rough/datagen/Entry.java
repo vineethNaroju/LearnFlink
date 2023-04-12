@@ -1,4 +1,4 @@
-package org.example.datagen;
+package org.rough.datagen;
 
 import org.apache.flink.streaming.api.functions.source.datagen.DataGeneratorSource;
 import org.apache.flink.streaming.api.functions.source.datagen.RandomGenerator;

@@ -1,4 +1,4 @@
-package org.example.sensors;
+package org.rough.sensors;
 
 public class SensorReading {
     public String id;
