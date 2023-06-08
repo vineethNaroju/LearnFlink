@@ -4,21 +4,19 @@ import org.apache.flink.configuration.Configuration;
 import org.apache.flink.configuration.CoreOptions;
 import org.apache.flink.table.api.*;
 
-import java.util.concurrent.CountDownLatch;
-
-public class IcebergAverage {
+public class IcebergSource {
 
     public static void main(String[] args)  {
-        IcebergAverage ia = new IcebergAverage();
+        IcebergSource ia = new IcebergSource();
 
         try {
-            ia.useTable();
+            ia.useTable(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
         } catch (Exception e) {
             //ignore it
         }
     }
 
-    public void useTable( ) throws Exception {
+    public void useTable(int loop, int cnt ) throws Exception {
         final Configuration config = new Configuration();
 
         config.set(CoreOptions.CHECK_LEAKED_CLASSLOADER, Boolean.FALSE);
@@ -34,7 +32,7 @@ public class IcebergAverage {
         tableEnv.executeSql("CREATE CATALOG hadoop_catalog WITH ( " +
                 " 'type' = 'iceberg', " +
                 " 'catalog-type' = 'hadoop', " +
-                " 'warehouse' = 'hdfs://localhost:9000/iceberg/catalog', " +
+                " 'warehouse' = 'hdfs:///iceberg/catalog', " +
                 " 'property-version' = '1' " +
                 ");");
 
@@ -52,37 +50,28 @@ public class IcebergAverage {
 
         tableEnv.executeSql("CREATE TABLE IF NOT EXISTS source_table (num BIGINT);");
 
-        Thread datagenThread = new Thread(() -> {
+        int k = 0, n = cnt;
 
-            int k = 0, n = 100;
+        while(true) {
+            try {
+                StringBuilder sb = new StringBuilder("INSERT INTO source_table values");
 
-            while (true) {
+                for(int i=0; i<n; i++) {
+                    k++;
 
-                try {
+                    sb.append(" (" + k + ")");
 
-                    StringBuilder stringBuilder =
-                            new StringBuilder("INSERT INTO source_table values ");
-
-                    for(int i=0; i<n-1; i++) {
-                        stringBuilder.append(String.format("(%d), ", ++k));
+                    if(i + 1 == n) {
+                        sb.append(";");
+                    } else {
+                        sb.append(",");
                     }
-
-                    stringBuilder.append(String.format("(%d);", ++k));
-
-                    String cmd = stringBuilder.toString();
-
-                    tableEnv.executeSql(cmd);
-
-                    Thread.sleep(30 * 1_000);
-                } catch (Exception e) {
-                    e.printStackTrace();
                 }
+                tableEnv.executeSql(sb.toString());
+                Thread.sleep( loop * 1_000);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        });
-
-        datagenThread.start();
-
-        CountDownLatch latch = new CountDownLatch(1);
-        latch.await();
+        }
     }
 }

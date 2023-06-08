@@ -12,17 +12,44 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <flink.version>1.16.0</flink.version>
+        <scala.binary.version>2.13</scala.binary.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.typesafe.akka</groupId>
+                <artifactId>akka-bom_${scala.binary.version}</artifactId>
+                <version>2.8.2</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
 
+<!--AKKA-->
 
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-cluster-sharding-typed_${scala.binary.version}</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-cluster-singleton_${scala.binary.version}</artifactId>
+        </dependency>
+
+<!--DELTA-->
         <dependency>
             <groupId>io.delta</groupId>
             <artifactId>delta-flink</artifactId>
             <version>0.6.0</version>
         </dependency>
 
+
+<!--FLINK-->
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-streaming-java</artifactId>
@@ -73,6 +100,11 @@
             <version>1.13.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-files</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
 
         <!--        <dependency>-->
 <!--            <groupId>org.apache.flink</groupId>-->
@@ -100,11 +132,7 @@
             <version>20220924</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-connector-files</artifactId>
-            <version>${flink.version}</version>
-        </dependency>
+
 
 
     </dependencies>
