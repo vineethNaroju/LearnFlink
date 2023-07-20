@@ -11,7 +11,7 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <flink.version>1.16.0</flink.version>
+        <flink.version>1.17.1</flink.version>
         <scala.binary.version>2.13</scala.binary.version>
     </properties>
 
@@ -36,10 +36,10 @@
             <artifactId>akka-cluster-sharding-typed_${scala.binary.version}</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-cluster-singleton_${scala.binary.version}</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.typesafe.akka</groupId>-->
+<!--            <artifactId>akka-cluster-singleton_${scala.binary.version}</artifactId>-->
+<!--        </dependency>-->
 
 <!--DELTA-->
         <dependency>
@@ -79,19 +79,19 @@
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-table-common</artifactId>
-            <version>1.16.0</version>
+            <version>${flink.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-table-runtime</artifactId>
-            <version>1.16.0</version>
+            <version>${flink.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-parquet</artifactId>
-            <version>1.16.0</version>
+            <version>${flink.version}</version>
         </dependency>
 
         <dependency>
@@ -105,6 +105,22 @@
             <artifactId>flink-connector-files</artifactId>
             <version>${flink.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-base</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.flink/flink-connector-datagen -->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-datagen</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
+
+
+
 
         <!--        <dependency>-->
 <!--            <groupId>org.apache.flink</groupId>-->
