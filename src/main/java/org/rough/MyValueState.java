@@ -34,13 +34,10 @@ public class MyValueState {
             }
         }
 
-
-
         final Configuration config = new Configuration();
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment(config);
 
         env.disableOperatorChaining();
-        env.enableCheckpointing(10000);
 
         long finalDelayMilliSeconds = delayMilliSeconds;
         GeneratorFunction<Long, Integer> generatorFunction = new GeneratorFunction<Long, Integer>() {
@@ -80,8 +77,11 @@ class WindowAverage extends RichFlatMapFunction<Integer, Integer>  implements Ch
         this.chkMilliSeconds = chkMilliSeconds;
     }
 
+    // sleeptime,value,repeat
     @Override
     public void flatMap(Integer input, Collector<Integer> collector) throws Exception {
+        
+        // Thread.sleep(input.sleepTime)
 
         if(sum.value() == null) {
             sum.update(input);
@@ -95,6 +95,7 @@ class WindowAverage extends RichFlatMapFunction<Integer, Integer>  implements Ch
             count.update(count.value() + 1);
         }
 
+        // for loop repeat times {collector}
         collector.collect(sum.value() / count.value());
     }
 
