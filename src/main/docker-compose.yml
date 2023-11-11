@@ -4,6 +4,7 @@ services:
     image: apache/flink:latest
     mem_limit: 1G
     mem_reservation: 128M
+    cpus: 1
     ports:
       - "8081:8081"
     command: jobmanager
@@ -16,6 +17,7 @@ services:
     image: apache/flink:latest
     mem_limit: 1G
     mem_reservation: 128M
+    cpus: 1
     depends_on:
       - jobmanager
     command: taskmanager
