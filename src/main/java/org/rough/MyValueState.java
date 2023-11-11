@@ -38,6 +38,7 @@ public class MyValueState {
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment(config);
 
         env.disableOperatorChaining();
+        env.enableCheckpointing(60000);
 
         long finalDelayMilliSeconds = delayMilliSeconds;
         GeneratorFunction<Long, Integer> generatorFunction = new GeneratorFunction<Long, Integer>() {
