@@ -1,0 +1,17 @@
+
+Say we have tweets {text: "", ts: <>, tweetId: <>, userId: <>, location: {x, y}}
+
+Ignore location & userId details for now.
+
+Now, we want to find the trending tags on a minutely basis (as an hour seems very long in online world)
+We can extend this to different locations later-on.
+
+1. Process text and emit valid tags (who decides the valid tags ?)
+- Does it come from another source (like use broadcast to other operators) ?
+- Does tag start with a hash ?
+
+2. Now those tags come as <tag, ts>.
+
+For every 1 minute (as seconds pass) - we return the tags with highest frequency .
+In a minute, we store the tag frequency and then return the top K ones with highest values for every second.
+

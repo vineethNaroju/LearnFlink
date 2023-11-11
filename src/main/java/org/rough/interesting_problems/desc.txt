@@ -1,0 +1,4 @@
+1. Find top K tags in tweets in the past 1 minute.
+2. Find connected components in a network graph with incoming edge addition or removal.
+3. Process cab location in real time to emit hexcode or density (something like uber).
+4. Multi-stream joining in a timeperiod.

@@ -1,4 +1,4 @@
-package org.rough;
+package org.rough.rough;
 
 import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.java.tuple.Tuple2;
@@ -10,7 +10,7 @@ import org.apache.flink.util.Collector;
 
 
 // nc -lk 9999
-public class Main {
+public class SocketWordCount {
     public static void main(String[] args) throws Exception {
         System.out.println("Hello world!");
 

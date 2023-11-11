@@ -1,0 +1,10 @@
+33500 => saving job graph takes too much time in HA mode.
+31261 => need clarity, ask prabhu.
+27473 => unassigned
+26888 => ?
+
+32701 => CEP memory leak, puneet duggal, NDFA.
+33293 => Kafka + Flink, data loss.
+3692  => ?
+
+31275 => Lineage graph (?), FLIP-276, 314, 294

@@ -118,7 +118,7 @@ public class Fheap {
 
             CompletableFuture<Message> cf = trigger(i, 5 + random.nextInt(10));
 
-            list.add(FutureUtils.orTimeout(cf, 8, TimeUnit.SECONDS));
+//            list.add(FutureUtils.orTimeout(cf, 8, TimeUnit.SECONDS));
 
             cf.handleAsync((message, throwable) -> {
                 print("got " + message);
