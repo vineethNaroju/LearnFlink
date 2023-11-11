@@ -2,6 +2,8 @@ version: "2.2"
 services:
   jobmanager:
     image: apache/flink:latest
+    mem_limit: 1G
+    mem_reservation: 128M
     ports:
       - "8081:8081"
     command: jobmanager
@@ -12,12 +14,14 @@ services:
 
   taskmanager:
     image: apache/flink:latest
+    mem_limit: 1G
+    mem_reservation: 128M
     depends_on:
       - jobmanager
     command: taskmanager
-    scale: 2
+    scale: 1
     environment:
       - |
         FLINK_PROPERTIES=
         jobmanager.rpc.address: jobmanager
-        taskmanager.numberOfTaskSlots: 4
+        taskmanager.numberOfTaskSlots: 8
