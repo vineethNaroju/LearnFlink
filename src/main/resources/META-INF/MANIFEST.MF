@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: org.rough.top_k_tags_in_a_minute.Poc
+Main-Class: org.rough.ceps.Flink32701
 

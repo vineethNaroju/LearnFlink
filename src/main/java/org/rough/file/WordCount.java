@@ -25,9 +25,9 @@ public class WordCount {
     public static void main(String[] args) throws Exception {
 
 
-        final String inputDir = "s3://narojv-emr-dev/autoscaler/input"; // "/Users/narojv/input";
+        final String inputDir = "s3://narojv-us-west-2/autoscaler/input"; // "/Users/narojv/input";
 
-        final String outputDir = "s3://narojv-emr-dev/autoscaler/output"; // "/Users/narojv/output;
+        final String outputDir = "s3://narojv-us-west-2/autoscaler/output"; // "/Users/narojv/output;
 
         final FileSource<String> fileSource = FileSource.
                 <String>forRecordStreamFormat(new TextLineInputFormat(), new Path(inputDir))

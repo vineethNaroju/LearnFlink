@@ -53,12 +53,5 @@ public class GenerateData {
             t.join();
         }
 
-
-
-
-
-
-
-
     }
 }
