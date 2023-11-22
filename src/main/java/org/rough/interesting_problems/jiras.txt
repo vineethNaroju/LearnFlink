@@ -8,3 +8,6 @@
 3692  => ?
 
 31275 => Lineage graph (?), FLIP-276, 314, 294
+
+FLINK-33406 => Job Manager HA with Zookeeper
+FLINK-33053 => resolved in 1.19.0 but looks interesting for me. Watchers leak in zookeeper ha for flink.
